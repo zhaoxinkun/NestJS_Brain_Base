@@ -12,8 +12,8 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    const dbPort = this.configService.get('DB_PORT');
-    console.log('🚀 ~ getHello ~ db: ', dbPort);
+    const dbName = this.configService.get('DB_NAME');
+    console.log('🚀 ~ getHello ~ db: ', dbName);
     return this.appService.getHello();
   }
 }

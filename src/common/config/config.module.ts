@@ -12,6 +12,8 @@ import Joi from 'joi';
  *  使用validationSchema对环境变量进行校验
  * */
 
+const envFilePath = `.env.${process.env.NODE_ENV || 'development'}`;
+
 // 使用Joi做校验
 const schema = Joi.object({
   DB_NAME: Joi.string().required(),
@@ -25,7 +27,7 @@ const schema = Joi.object({
   imports: [
     NestConfigModule.forRoot({
       isGlobal: true, //全局使用
-      envFilePath: process.env.NODE_ENV || '.env', //配置路径
+      envFilePath, //配置路径
       validationSchema: schema, //配置校验
     }),
   ],
